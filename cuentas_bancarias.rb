@@ -21,6 +21,7 @@ class CuentaBancaria
     def transferir(monto, cuenta_destino, cuenta_procedencia) 
         @saldo = @saldo - monto
         cuenta_destino.saldo = cuenta_destino.saldo + monto
+        cuenta_procedencia.saldo = cuenta_procedencia.saldo - monto
     end
 end
 
@@ -28,3 +29,5 @@ c1 = CuentaBancaria.new('santande', '123-4567', 5000)
 c2 = CuentaBancaria.new('Estado', '456-7891', 5000)
 
 usuario1 = Usuario.new("ricardo", c1, c2)
+
+c1.transferir(5000, c1, c2)
